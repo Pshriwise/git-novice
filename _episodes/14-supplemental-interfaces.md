@@ -1,13 +1,14 @@
 ---
-title: Using Git from RStudio
+title: Using Git from a text editor
 teaching: 10
 exercises: 0
 questions:
-- "How can I use Git with RStudio?"
+- "Can I use Git with my text editor?"
 objectives:
-- "Understand how to use Git from RStudio."
+- "Understand that there are convenient ways to use Git other than the command-line."
+- "Using non-command-line Git interfaces is useful but only after having a solid understanding of command-line Git."
 keypoints:
-- "Create an RStudio project"
+- "See Git in action outside of the command-line."
 ---
 
 Since version control is so useful when developing scripts, RStudio has built-in
