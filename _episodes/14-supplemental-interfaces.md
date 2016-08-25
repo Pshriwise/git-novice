@@ -11,6 +11,8 @@ keypoints:
 - "See Git in action outside of the command-line."
 ---
 
+Using Git from the shell 
+
 Since version control is so useful when developing scripts, RStudio has built-in
 integration with Git. There are some more obscure Git features that you still
 need to use the command-line for, but RStudio has a nice interface for most
