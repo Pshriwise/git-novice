@@ -11,96 +11,173 @@ keypoints:
 - "See Git in action outside of the command-line."
 ---
 
-Using Git from the shell 
+Up until now, we've used Git commands within the shell to interact with a Git repository.
+It is possible to use Git in other ways.  Many modern text editors like Sublime Text, Adobe Brackets,
+or Microsoft Code have nice capabilities for using Git.  GitHub.com even produces its own popular
+text editor called Atom, which naturally has Git integrated.  Integrated Development Environments (IDEs) like 
+RStudio, Eclipse, or Apple's XCode are also able to use Git, if not natively, with a plugin/extension.
 
-Since version control is so useful when developing scripts, RStudio has built-in
-integration with Git. There are some more obscure Git features that you still
-need to use the command-line for, but RStudio has a nice interface for most
-common operations.
+The main problem with using Git through a non-shell interface is that the mechanics of using Git are
+less explicit than they are with the shell.  Furthermore, usually the integrations that are seen are
+not comprehensive:  the most common Git operations are available from the application, but more
+esoteric operations need to be done from the shell.  That is why it is important to view application
+Git integration as a way to **assist, not replace** using Git.  
 
-RStudio let's you create a [project][rstudio-projects] associated with
-a given directory. This is a way to keep track of related files. One
-of the way to keep track of them is via version control! To get
-started using RStudio for version control, let's make a new project:
+Here is an example of using a text editor that integrates Git.  We'll switch back and forth using the 
+shell and the application (in this case Microsoft VS Code).
 
-![](../fig/RStudio_screenshot_newproject.png)
+~~~
+$ mkdir fruit
+$ cd fruit/
+$ git init
+~~~
+{: .bash}
+~~~
+Initialized empty Git repository in /Users/Me/Desktop/data-shell/fruit/.git/
+~~~
+{: .output}
+~~~
+$ code .
+~~~
+{: .bash}
+ 
+The "`code .`" command opens the "`.`" directory, which happens to be "`fruit`" because we used "`cd`" to
+get there.
 
-This will pop up a window asking us how we want to create the project. We have
-some options here. Let's say that we want to use RStudio with the planets
-repository that we already made. Since that repository lives in a directory on
-our computer, we'll choose "existing directory":
+<script src="{{ site.github.url | replace_first: 'http:', 'https:' }}/assets/js/better-simple-slideshow.min.js"></script>
+<div class="bss-slides">
+        <figure>
+            <img src="/fig/vscode-1-1.png" width="100%" />
+            <figcaption>Fig 1.1: Make a new file and call it "list.txt"</figcaption> 
+        </figure>
+        <figure>
+            <img src="/fig/vscode-1-2.png" width="100%" />
+            <figcaption>Fig 1.2: A (1) notification appears above the Git icon on the left.</figcaption> 
+        </figure>
+        <figure>
+            <img src="/fig/vscode-1-3.png" width="100%" />
+            <figcaption>Fig 1.3: Clicking on the Git pane, we can see there is a new file listed under the changes.</figcaption> 
+        </figure>
+        <figure>
+            <img src="/fig/vscode-1-4.png" width="100%" />
+            <figcaption>Fig 1.4: Going back to the files pane, and adding some text to the file.</figcaption> 
+        </figure>
+</div>
 
-![](../fig/RStudio_screenshot_existingdirectory.png)
+We now have a file called "`list.txt`" in the "`fruit`" directory, and we've saved it.  Let's go back to
+the shell and see what our "`fruit`" directory looks like and what Git's status is:    
 
-> ## Do You See a "Version Control" Option?
->
-> Although we're not going to use it here, there should be a "version control"
-> option on this menu. That is what you would click on if you wanted to
-> create a project on your computer by cloning a repository from github.
-> If that option is not present, it probably means that RStudio doesn't know
-> where your Git executable is. See
-> [this page](https://stat545-ubc.github.io/git03_rstudio-meet-git.html)
-> for some debugging advice. Even if you have Git installed, you may need
-> to accept the XCode license if you are using MacOSX.
-{: .callout}
+~~~
+$ ls
+~~~
+{: .bash}
+~~~
+list.txt
+~~~
+{: .output}
+~~~
+$ git status
+~~~
+{: .bash}
+~~~
+On branch master
 
-Next, RStudio will ask which existing directory we want to use. Click "browse"
-to navigate to the correct directory on your computer, then click "create
-project":
+Initial commit
 
-![](../fig/RStudio_screenshot_navigateexisting.png)
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
 
-Ta-da! Now you have an R project containing your repository. Notice the
-vertical "Git" menu that is now on the menu bar. This means RStudio has
-recognized that this directory is a git repository, so it's giving you tools
-to use Git:
+	list.txt
 
-![](../fig/RStudio_screenshot_afterclone.png)
+nothing added to commit but untracked files present (use "git add" to track)
+~~~
+{: .output}
 
-To edit the files in your repository, you can click on them from the panel in
-the lower right. Let's add some more information about pluto:
+Now let's add and commit this new file with Git:
 
-![](../fig/RStudio_screenshot_editfiles.png)
+~~~
+$ git add list.txt
+$ git commit -m "An initial list of fruit."
+~~~
+{: .bash}
+~~~
+[master (root-commit) d496271] An initial list of fruit.
+ 1 file changed, 4 insertions(+)
+ create mode 100644 list.txt
+~~~
+{: .output}
 
-We can also use RStudio to commit these changes. Go to the git menu and click
-"commit":
+At this point, a curious thing has happened inside of VS Code.  The "(1)" notification over the Git icon
+on the left is now missing, meaning the our fruit Git repository is up to date. Let's now edit the
+"`list.txt`" file, save, see what happens, then do a "`git add`", and a "`git commit -m`" from VS Code:
 
-![](../fig/RStudio_screenshot_commit.png)
+<div class="bss-slides">
+        <figure>
+            <img src="/fig/vscode-2-1.png" width="100%" />
+            <figcaption>Fig 2.1: The (1) notification above the Git pane is gone.</figcaption> 
+        </figure>
+        <figure>
+            <img src="/fig/vscode-2-2.png" width="100%" />
+            <figcaption>Fig 2.2: We add the "tomatoes" line to the file and save the file.  Now the (1) notification is back.</figcaption> 
+        </figure>
+        <figure>
+            <img src="/fig/vscode-2-3.png" width="100%" />
+            <figcaption>Fig 2.3: Click on the Github pane, click on the file, then hovering the mouse over the file, a "+" will appear.  This does a "stage", just like "git add"</figcaption> 
+        </figure>
+        <figure>
+            <img src="/fig/vscode-2-4.png" width="100%" />
+            <figcaption>Fig 2.4: Now the file is staged and we want to commit, we'll add a message in the box above.</figcaption> 
+        </figure>
+        <figure>
+            <img src="/fig/vscode-2-5.png" width="100%" />
+            <figcaption>Fig 2.5: Click the checkmark above the message box to do a "git commit"</figcaption> 
+        </figure>
+        <figure>
+            <img src="/fig/vscode-2-6.png" width="100%" />
+            <figcaption>Fig 2.6: The file is committed and the repository is up to date.</figcaption> 
+        </figure>
+</div>
 
-This will bring up a screen where you can select which files to commit (check
-the boxes in the "staged" column) and enter a commit message (in the upper
-right). The icons in the "status" column indicate the current status of each
-file. You can also see the changes to each file by clicking on its name. Once
-everything is the way you want it, click "commit":
+And now let's go back to the shell, check the git status, and see if our log reflects the changes:
 
-![](../fig/RStudio_screenshot_review.png)
+~~~
+$ git status
+~~~
+{: .bash}
+~~~
+On branch master
+nothing to commit, working directory clean
+~~~
+{: .output}
+~~~
+$ git log
+~~~
+{: .bash}
+~~~
+commit a6b1c32df3dcde665a0513bba60706c4d4231c6a
+Author: Me <me@wisc.edu>
+Date:   Fri Aug 26 10:42:43 2016 -0500
 
-You can push these changes by selecting "push" from the Git menu. There are
-also options there to pull from a remote version of the repository, and view
-the history:
+    Added tomatoes to list.
 
-![](../fig/RStudio_screenshot_history.png)
+commit d49627112de703f7dcc55c4169ee790cc038374a
+Author: Me <me@wisc.edu>
+Date:   Fri Aug 26 10:26:12 2016 -0500
 
-> ## Are the Push/Pull Commands Grayed Out?
->
-> If this is the case, it generally means that RStudio doesn't know the
-> location of any other version of your repository (i.e. the one on Github).
-> To fix this, open a terminal to the repository and enter the command:
-> `git push -u origin master`. Then restart RStudio.
-{: .callout}
+    An initial list of fruit.
+~~~
+{: .output}
 
-If we click on "history", we can see a pretty graphical version of what
-`git log` would tell us:
+### Git operations on Github.com
 
-![](../fig/RStudio_screenshot_viewhistory.png)
+On Github it's quick to find a history of Git commits, and it's easy to see changes in files.  But it's
+also possible to also edit files and commit changes directly on the GitHub website.  This is useful
+sometimes for things like typos or edits to documentation (the non-code parts of software).  But
+editing code on the Github website is not ideal because, as much as possible, editing code should be 
+done in the same environment as running/testing/debugging that code.  On the github website, you don't
+have this possibility.
 
-RStudio creates some files that is uses to keep track of your project. You
-generally don't want to track these, so adding them to your .gitignore file
-is a good idea:
-
-![](../fig/RStudio_screenshot_gitignore.png)
-
-There are many more features buried in the RStudio git interface, but these
-should be enough to get you started!
-
-[rstudio-projects]: https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects
+<script>
+       var opts = { auto : false };
+       makeBSS('.bss-slides', opts);
+</script>
