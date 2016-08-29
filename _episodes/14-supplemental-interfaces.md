@@ -47,19 +47,19 @@ get there.
 <script src="{{ site.github.url | replace_first: 'http:', 'https:' }}/assets/js/better-simple-slideshow.min.js"></script>
 <div class="bss-slides">
         <figure>
-            <img src="/fig/vscode-1-1.png" width="100%" />
+            <img src="../fig/vscode-1-1.png" width="100%" />
             <figcaption>Fig 1.1: Make a new file and call it "list.txt"</figcaption> 
         </figure>
         <figure>
-            <img src="/fig/vscode-1-2.png" width="100%" />
+            <img src="../fig/vscode-1-2.png" width="100%" />
             <figcaption>Fig 1.2: A (1) notification appears above the Git icon on the left.</figcaption> 
         </figure>
         <figure>
-            <img src="/fig/vscode-1-3.png" width="100%" />
+            <img src="../fig/vscode-1-3.png" width="100%" />
             <figcaption>Fig 1.3: Clicking on the Git pane, we can see there is a new file listed under the changes.</figcaption> 
         </figure>
         <figure>
-            <img src="/fig/vscode-1-4.png" width="100%" />
+            <img src="../fig/vscode-1-4.png" width="100%" />
             <figcaption>Fig 1.4: Going back to the files pane, and adding some text to the file.</figcaption> 
         </figure>
 </div>
@@ -113,27 +113,27 @@ on the left is now missing, meaning the our fruit Git repository is up to date. 
 
 <div class="bss-slides">
         <figure>
-            <img src="/fig/vscode-2-1.png" width="100%" />
+            <img src="../fig/vscode-2-1.png" width="100%" />
             <figcaption>Fig 2.1: The (1) notification above the Git pane is gone.</figcaption> 
         </figure>
         <figure>
-            <img src="/fig/vscode-2-2.png" width="100%" />
+            <img src="../fig/vscode-2-2.png" width="100%" />
             <figcaption>Fig 2.2: We add the "tomatoes" line to the file and save the file.  Now the (1) notification is back.</figcaption> 
         </figure>
         <figure>
-            <img src="/fig/vscode-2-3.png" width="100%" />
+            <img src="../fig/vscode-2-3.png" width="100%" />
             <figcaption>Fig 2.3: Click on the Github pane, click on the file, then hovering the mouse over the file, a "+" will appear.  This does a "stage", just like "git add"</figcaption> 
         </figure>
         <figure>
-            <img src="/fig/vscode-2-4.png" width="100%" />
+            <img src="../fig/vscode-2-4.png" width="100%" />
             <figcaption>Fig 2.4: Now the file is staged and we want to commit, we'll add a message in the box above.</figcaption> 
         </figure>
         <figure>
-            <img src="/fig/vscode-2-5.png" width="100%" />
+            <img src="../fig/vscode-2-5.png" width="100%" />
             <figcaption>Fig 2.5: Click the checkmark above the message box to do a "git commit"</figcaption> 
         </figure>
         <figure>
-            <img src="/fig/vscode-2-6.png" width="100%" />
+            <img src="../fig/vscode-2-6.png" width="100%" />
             <figcaption>Fig 2.6: The file is committed and the repository is up to date.</figcaption> 
         </figure>
 </div>
